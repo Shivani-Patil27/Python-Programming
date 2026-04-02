@@ -1,0 +1,357 @@
+Enter password: *********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 9.6.0 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| world              |
++--------------------+
+5 rows in set (0.214 sec)
+
+mysql> create database HIT;
+Query OK, 1 row affected (0.125 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| hit                |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| world              |
++--------------------+
+6 rows in set (0.014 sec)
+
+mysql> show tables;
+ERROR 1046 (3D000): No database selected
+mysql> use hit;
+Database changed
+mysql> show tables;
+Empty set (0.088 sec)
+
+mysql> CREATE TABLE Persons (
+    ->   PersonID int PRIMARY KEY,
+    ->   LastName varchar(255) NOT NULL,
+    ->   FirstName varchar(255),
+    ->   Address varchar(255),
+    ->   City varchar(255)
+    -> );
+Query OK, 0 rows affected (0.240 sec)
+
+mysql> show tables;
++---------------+
+| Tables_in_hit |
++---------------+
+| persons       |
++---------------+
+1 row in set (0.049 sec)
+
+mysql> desc persons;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| PersonID  | int          | NO   | PRI | NULL    |       |
+| LastName  | varchar(255) | NO   |     | NULL    |       |
+| FirstName | varchar(255) | YES  |     | NULL    |       |
+| Address   | varchar(255) | YES  |     | NULL    |       |
+| City      | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+5 rows in set (0.077 sec)
+
+mysql> insert into persons(PersonID,LastName,FirstName,Address,City)values(101,"Jha","Prashant","Thane mumbai","Nagpur");
+Query OK, 1 row affected (0.131 sec)
+
+mysql> insert into persons(PersonID,LastName,FirstName,Address,City)values(102,"sharma","rohit","baner pune","pune");
+Query OK, 1 row affected (0.070 sec)
+
+mysql> insert into persons(PersonID,LastName,FirstName,Address,City)values(103,"gupta","abhay","jahu mumbai","mumbai");
+Query OK, 1 row affected (0.060 sec)
+
+mysql> select * from persons;
++----------+----------+-----------+--------------+--------+
+| PersonID | LastName | FirstName | Address      | City   |
++----------+----------+-----------+--------------+--------+
+|      101 | Jha      | Prashant  | Thane mumbai | Nagpur |
+|      102 | sharma   | rohit     | baner pune   | pune   |
+|      103 | gupta    | abhay     | jahu mumbai  | mumbai |
++----------+----------+-----------+--------------+--------+
+3 rows in set (0.008 sec)
+
+mysql> select abs(-44) from dual;
++----------+
+| abs(-44) |
++----------+
+|       44 |
++----------+
+1 row in set (0.252 sec)
+
+mysql> select power(2,4) from dual;
++------------+
+| power(2,4) |
++------------+
+|         16 |
++------------+
+1 row in set (0.008 sec)
+
+mysql> select sqrt(16) from dual;
++----------+
+| sqrt(16) |
++----------+
+|        4 |
++----------+
+1 row in set (0.007 sec)
+
+mysql> select exp(4) from dual;
++--------------------+
+| exp(4)             |
++--------------------+
+| 54.598150033144236 |
++--------------------+
+1 row in set (0.007 sec)
+
+mysql> SELECT GREATEST(3, 12, 34, 8, 25)from dual;
++----------------------------+
+| GREATEST(3, 12, 34, 8, 25) |
++----------------------------+
+|                         34 |
++----------------------------+
+1 row in set (0.035 sec)
+
+mysql> SELECT least(3,12,34,8,25)from dual;
++---------------------+
+| least(3,12,34,8,25) |
++---------------------+
+|                   3 |
++---------------------+
+1 row in set (0.009 sec)
+
+mysql> Select round(4.7)from dual;
++------------+
+| round(4.7) |
++------------+
+|          5 |
++------------+
+1 row in set (0.034 sec)
+
+mysql> Select round(4.4)from dual;
++------------+
+| round(4.4) |
++------------+
+|          4 |
++------------+
+1 row in set (0.005 sec)
+
+mysql> Select round(4.3)from dual;
++------------+
+| round(4.3) |
++------------+
+|          4 |
++------------+
+1 row in set (0.006 sec)
+
+mysql> SELECT MOD(8,3) from dual;
++----------+
+| MOD(8,3) |
++----------+
+|        2 |
++----------+
+1 row in set (0.008 sec)
+
+mysql> SELECT LOWER('HELP4CODE ELEARNING')from dual;
++------------------------------+
+| LOWER('HELP4CODE ELEARNING') |
++------------------------------+
+| help4code elearning          |
++------------------------------+
+1 row in set (0.037 sec)
+
+mysql> SELECT UPPER('help4code elearning')from dual;
++------------------------------+
+| UPPER('help4code elearning') |
++------------------------------+
+| HELP4CODE ELEARNING          |
++------------------------------+
+1 row in set (0.035 sec)
+
+mysql> select rpad('Help4code','15','_')from dual;
++----------------------------+
+| rpad('Help4code','15','_') |
++----------------------------+
+| Help4code______            |
++----------------------------+
+1 row in set (0.007 sec)
+
+mysql> select rpad('Help4code','15','#')from dual;
++----------------------------+
+| rpad('Help4code','15','#') |
++----------------------------+
+| Help4code######            |
++----------------------------+
+1 row in set (0.006 sec)
+
+mysql> select lpad('Help4code','15','_')from dual;
++----------------------------+
+| lpad('Help4code','15','_') |
++----------------------------+
+| ______Help4code            |
++----------------------------+
+1 row in set (0.033 sec)
+
+mysql> select lpad('Help4code','15','#')from dual;
++----------------------------+
+| lpad('Help4code','15','#') |
++----------------------------+
+| ######Help4code            |
++----------------------------+
+1 row in set (0.006 sec)
+
+mysql> select length ('Help4code Elearning')from dual;
++--------------------------------+
+| length ('Help4code Elearning') |
++--------------------------------+
+|                             19 |
++--------------------------------+
+1 row in set (0.008 sec)
+
+mysql> select length ('Help4code Elearning')as "LENGTH" from dual;
++--------+
+| LENGTH |
++--------+
+|     19 |
++--------+
+1 row in set (0.006 sec)
+
+mysql> select concat ('Help4code','Elearning') from dual;
++----------------------------------+
+| concat ('Help4code','Elearning') |
++----------------------------------+
+| Help4codeElearning               |
++----------------------------------+
+1 row in set (0.008 sec)
+
+mysql> select concat ('Help4code','Elearning') as "ADD String" from dual;
++--------------------+
+| ADD String         |
++--------------------+
+| Help4codeElearning |
++--------------------+
+1 row in set (0.006 sec)
+
+mysql> select REPLACE ('111apsmicrotech111','111')from dual;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')from dual' at line 1
+
+mysql> select REVERSE ('help4code.com') from dual;
++---------------------------+
+| REVERSE ('help4code.com') |
++---------------------------+
+| moc.edoc4pleh             |
++---------------------------+
+1 row in set (0.009 sec)
+
+mysql> SELECT ascii('A')from dual;
++------------+
+| ascii('A') |
++------------+
+|         65 |
++------------+
+1 row in set (0.006 sec)
+
+mysql> SELECT ascii('t')from dual;
++------------+
+| ascii('t') |
++------------+
+|        116 |
++------------+
+1 row in set (0.004 sec)
+
+mysql> SELECT INSTR('help4code','learn')from dual;
++----------------------------+
+| INSTR('help4code','learn') |
++----------------------------+
+|                          0 |
++----------------------------+
+1 row in set (0.034 sec)
+
+mysql> select 30-20 from dual;
++-------+
+| 30-20 |
++-------+
+|    10 |
++-------+
+1 row in set (0.060 sec)
+
+mysql> select * from persons;
++----------+----------+-----------+--------------+--------+
+| PersonID | LastName | FirstName | Address      | City   |
++----------+----------+-----------+--------------+--------+
+|      101 | Jha      | Prashant  | Thane mumbai | Nagpur |
+|      102 | sharma   | rohit     | baner pune   | pune   |
+|      103 | gupta    | abhay     | jahu mumbai  | mumbai |
++----------+----------+-----------+--------------+--------+
+3 rows in set (0.018 sec)
+
+mysql> insert into persons(PersonID,LastName,FirstName,Address,City)values(104,"Bob","Sak","Tripura","Pune");
+Query OK, 1 row affected (0.107 sec)
+
+mysql> insert into persons(PersonID,LastName,FirstName,Address,City)values(105,"Patil","Sahana","Chikodi","Belgavi");
+Query OK, 1 row affected (0.071 sec)
+
+mysql> insert into persons(PersonID,LastName,FirstName,Address,City)values(106,"Patil","Sakshi","Goa","Maharashtra");
+Query OK, 1 row affected (0.058 sec)
+
+mysql> select * from persons;
++----------+----------+-----------+--------------+-------------+
+| PersonID | LastName | FirstName | Address      | City        |
++----------+----------+-----------+--------------+-------------+
+|      101 | Jha      | Prashant  | Thane mumbai | Nagpur      |
+|      102 | sharma   | rohit     | baner pune   | pune        |
+|      103 | gupta    | abhay     | jahu mumbai  | mumbai      |
+|      104 | Bob      | Sak       | Tripura      | Pune        |
+|      105 | Patil    | Sahana    | Chikodi      | Belgavi     |
+|      106 | Patil    | Sakshi    | Goa          | Maharashtra |
++----------+----------+-----------+--------------+-------------+
+6 rows in set (0.047 sec)
+
+mysql> select * from persons where LastName='Patil';
++----------+----------+-----------+---------+-------------+
+| PersonID | LastName | FirstName | Address | City        |
++----------+----------+-----------+---------+-------------+
+|      105 | Patil    | Sahana    | Chikodi | Belgavi     |
+|      106 | Patil    | Sakshi    | Goa     | Maharashtra |
++----------+----------+-----------+---------+-------------+
+2 rows in set (0.046 sec)
+
+mysql> select * from persons where City='Belgavi';
++----------+----------+-----------+---------+---------+
+| PersonID | LastName | FirstName | Address | City    |
++----------+----------+-----------+---------+---------+
+|      105 | Patil    | Sahana    | Chikodi | Belgavi |
++----------+----------+-----------+---------+---------+
+1 row in set (0.012 sec)
+
+mysql> select * from persons where City='Maharashtra';
++----------+----------+-----------+---------+-------------+
+| PersonID | LastName | FirstName | Address | City        |
++----------+----------+-----------+---------+-------------+
+|      106 | Patil    | Sakshi    | Goa     | Maharashtra |
++----------+----------+-----------+---------+-------------+
+1 row in set (0.009 sec)
+
+mysql>
